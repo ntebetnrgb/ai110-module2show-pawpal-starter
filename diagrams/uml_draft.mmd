@@ -1,0 +1,35 @@
+classDiagram
+    %% Phase 1 draft — initial brainstormed design (before implementation).
+
+    class Owner {
+        +str name
+        +list~Pet~ pets
+        +add_pet(pet)
+        +all_tasks() list
+    }
+
+    class Pet {
+        +str name
+        +str species
+        +list~Task~ tasks
+        +add_task(task)
+    }
+
+    class Task {
+        +str description
+        +str time
+        +str frequency
+        +bool completed
+        +mark_complete()
+    }
+
+    class Scheduler {
+        +Owner owner
+        +sort_by_time() list
+        +todays_schedule() list
+        +detect_conflicts() list
+    }
+
+    Owner "1" --> "*" Pet : has
+    Pet "1" --> "*" Task : has
+    Scheduler --> Owner : reads
